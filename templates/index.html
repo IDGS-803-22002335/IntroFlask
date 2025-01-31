@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block container %}
+<h1>{{grupo}}</h1>
+
+{% for nombre in lista%}
+<h2>{{nombre}}</h2>
+
+{%endfor%}
+{% endblock %}
