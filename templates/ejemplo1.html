@@ -1,7 +1,13 @@
 {% extends "layout.html" %}
 
 {% block container %}
-
+{%import "_macros.html" as macros %}
 <h1>Ejemplo1</h1>
 
+<label for="">Nombre</label>
+{{macros.datos("Nombre","Nombre")}}<!--Recibe dos parametros y uno es obcional-->
+<label for=""> Edad</label>
+{{macros.datos("Edad", "Edad", "Number")}}
+<label for="">Contraseñe</label>
+{{macros.datos("Contraseña", "Contraseña","password")}}
 {% endblock %}
