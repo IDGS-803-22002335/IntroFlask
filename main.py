@@ -12,12 +12,66 @@ def index():
 
 @app.route("/OperaBas", methods=["GET", "POST"])
 def operas():
+    resul = ""
     if request.method == "POST":
         num1 = request.form.get("n1")
         num2 = request.form.get("n2")
-        resul = int(num1) + int(num2)
+        opcion = request.form.get("Opcion")
+
+        if opcion == "Suma":
+            resul = int(num1) + int(num2)
+        elif opcion == "Resta":
+            resul = int(num1) - int(num2)
+        elif opcion == "Multiplicar":
+            resul = int(num1) * int(num2)
+        elif opcion == "Dividir":
+            resul = int(num1) / int(num2)
+
         resul = int(resul)
     return render_template("OperaBas.html", resul=resul)
+
+
+@app.route("/cinePolis", methods=["GET", "POST"])
+def cine():
+    nombre, cantidad, tarjeta, boletos = "", 0, "", 0
+    alerta, descuento = "", 0.0
+    cantidadaPagar = 0
+
+    if request.method == "POST":
+
+        nombre = request.form.get("nombre")
+
+        cantidad = request.form.get("compradores", "0")
+        tarjeta = request.form.get("Opcion")
+        boletos = request.form.get("boletos")
+        cantidad = int(cantidad)
+        boletos = int(boletos)
+
+        cantidadaPagar = 0.0
+
+        # Calcular los boletos que se pueden comprar
+        boletoxpersona = 7
+        boletoxpersona *= cantidad
+        if boletos <= boletoxpersona:
+
+            if boletos > 5:
+                cantidadaPagar = 12 * boletos
+                descuento = cantidadaPagar * 0.15
+                cantidadaPagar -= descuento
+            elif 3 <= boletos <= 5:
+                cantidadaPagar = 12 * boletos
+                descuento = cantidadaPagar * 0.10
+                cantidadaPagar -= descuento
+            else:
+                cantidadaPagar = 12*boletos
+            if tarjeta == "Si":
+                descuentotarjeta = cantidadaPagar * 0.10
+                cantidadaPagar -= descuentotarjeta
+
+        else:
+            alerta = "¡¡Solo se pueden comprar 7 boletos por persona!!"
+
+    return render_template("cine.html", cantidadaPagar=cantidadaPagar, nombre=nombre, tarjeta=tarjeta, cantidad=cantidad, boletos=boletos, alerta=alerta)
 
 
 @app.route("/resultado", methods=["GET", "POST"])

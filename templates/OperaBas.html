@@ -3,14 +3,29 @@
 {% block container %}
 <h1>Calcular</h1>
 <form action="/OperaBas" method="post">
+
+    <label>Sumar</label>
+    <input type="radio" name="Opcion" value="Suma"><br>
+
+    <label>Restar</label>
+    <input type="radio" name="Opcion" value="Resta"><br>
+
+    <label>Multiplicar</label>
+    <input type="radio" name="Opcion" value="Multiplicar"><br>
+
+    <label>Dividir</label>
+    <input type="radio" name="Opcion" value="Dividir"><br>
+
     <label>N1:</label>
     <input type="number" name="n1"><br>
     <label>N2:</label>
     <input type="number" name="n2"><br>
+    <br>
     <input type="submit" value="Calcular" class="btn btn-primary" name="n1"><br>
     <div class="col-md-6 d-flex  justify-content-end">
         <label class="me-2">El resultado es:</label>
         <span class="fw-bold">{{ resul }}</span>
+
     </div>
 
 

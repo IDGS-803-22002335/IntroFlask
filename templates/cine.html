@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src='main.js'></script>
+
+</head>
+
+<body style="background-color: #1960B6 ; background-image: url('../static/img/image.png'); background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: 30% auto;">
+    <!--1f618d-->
+    {% block container %}
+    <div class=" container">
+        <div class="d-flex justify-content-center">
+            <h1 style="display: inline; background-color: gray; padding-bottom: 2px;">CinePolis</h1>
+        </div>
+        <div class=" row">
+            <form action="/cinePolis" method="post">
+                <div class="row"
+                    style="display: flex; justify-content: space-between; margin-left: 30px; margin-right: 60px;">
+                    <div class="card"
+                        style="float:left; width: 18rem;  margin-top: 100px; background-color: #1960B6 ; border: 2px solid white;">
+                        <div class=" card-body">
+                            <h5 class="card-title" style="color:white;">Entradas</h5>
+                            <label style="color: white;">Nombre</label>
+                            <input type="text" name="nombre" value="{{nombre}}"> <br>
+                            <label style="color: white;">Cantidad compradores</label>
+                            <input type="number" name="compradores" value="{{cantidad}}"><br>
+                            <!--Poner los radio buttoms en la misma altura-->
+                            <label style="color: white;">Tarjeta cineco</label><br>
+                            <input type="radio" name="Opcion" value="Si">
+                            <label style="color: white;">Si</label><br>
+                            <input type="radio" name="Opcion" value="No">
+                            <label style="color:white">No</label><br>
+                            <label style="color:white">Cantidad De Boletos</label>
+                            <input type="number" name="boletos" value="{{boletos}}">
+                            <label style="color: red;">
+                                {{alerta}}
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="card"
+                        style="float:left; width: 18rem; margin-top: 100px; background-color: #1960B6 ; border: 2px solid white;">
+                        <div class=" card-body">
+                            <h5 class="card-title" style="color:white">Salida</h5>
+                            <label style="color:white">Valor a pagar</label>
+                            <input type="number" name="paga" value="{{cantidadaPagar}}"> <br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        <div class="card mt-3"
+                            style="width: 18rem; background-color: #1960B6 ; border: 2px solid white;">
+                            <div class="card-body text-center">
+                                <h5 class="card-title" style="color: white;">Acciones</h5>
+                                <input type="submit" value="Procesar" style="background-color: white;" name="n1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </form>
+        </div>
+    </div>
+    {%endblock %}
+
+</body>
+
+</html>
